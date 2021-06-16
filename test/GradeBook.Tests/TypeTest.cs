@@ -7,7 +7,63 @@ namespace GradeBook.Tests
     {
         [Fact]
 
-        public void Test1()
+
+         public void Test()
+        {
+
+            //arrange section
+            var value = GetInt();
+            SetInt(ref value);
+            Assert.Equal(4, value);
+
+        }
+
+        private void SetInt(ref int x)
+        {
+            x = 4;
+        }
+
+        private int GetInt()//estou passando por referência a localização de onde a variavel está armazenada.
+        {
+            return 3; //contruindo uma instancai 
+        }
+        public void CSharpIsPassedByRef()
+        {
+
+            //arrange section
+            var book1 = GetBook("Book 1");
+            GetBookSetName(out book1, "New Name");
+
+
+            Assert.Equal("New Name", book1.Name);
+
+        }
+
+        private void GetBookSetName(out Book book, string name)//estou passando por referência a localização de onde a variavel está armazenada.
+        {
+            book = new Book(name); //contruindo uma instancai 
+
+        }
+
+        public void CSharpIsPassedByValue()
+        {
+
+            //arrange section
+            var book1 = GetBook("Book 1");
+            GetBookSetName(book1, "New Name");
+
+
+            Assert.Equal("Book 1", book1.Name);
+
+        }
+
+        private void GetBookSetName(Book book, string name)
+        {
+            book = new Book(name); //contruindo uma instancai 
+
+        }
+
+        public void CanSetNameFromReference()
         {
 
             //arrange section
