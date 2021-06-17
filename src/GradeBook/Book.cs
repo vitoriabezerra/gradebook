@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace GradeBook
@@ -29,20 +30,16 @@ namespace GradeBook
             result.High = double.MinValue; //Smallest possible floating point value
             result.Low = double.MaxValue; //Largest possible floating point value
 
-           foreach (var grade in grades)
+
+            var index =0;
+            do
            {
-               result.Average += grade;
-
-               if( grade > result.High )
-               {
-                   result.High = grade;
-               }
-               if( grade < result.Low )
-               {
-                   result.Low = grade;
-               }
-
-           }
+            result.Average += grades[index];
+            result.Low = Math.Min(grades[index], result.Low);
+            result.Low = Math.Max(grades[index], result.High);
+            index++;
+           }while(index < grades.Count);
+           
            result.Average /= grades.Count; 
            return result;
         }
