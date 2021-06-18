@@ -9,9 +9,20 @@ namespace GradeBook
         {
             //criando um novo objeto do tipo book
             Book book = new Book("Vitoria's Gradebook");
-            book.AddGrade(48.9);
-            book.AddGrade(67.9);
-            book.AddGrade(98.9);
+            
+            
+            while(true){
+                Console.WriteLine("Enter a grade or 'q' to exit");
+                var input = Console.ReadLine();
+
+                if(input == "q")
+                {
+                    break; //caso o input seja q, ele irá dar break e sair do loop do while
+                }
+
+                var grade = double.Parse(input);
+                book.AddGrade(grade);
+            }
             var stats = book.GetStatistics();
 
 
