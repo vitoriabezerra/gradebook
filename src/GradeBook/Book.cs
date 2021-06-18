@@ -51,7 +51,7 @@ namespace GradeBook
             }
             else
             {
-                System.Console.WriteLine("Grade is out of range");
+                throw new ArgumentException($"Invalid {nameof(grade)}");
             }
         }
 
